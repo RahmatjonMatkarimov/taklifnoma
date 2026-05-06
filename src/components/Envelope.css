@@ -1,0 +1,144 @@
+.envelope-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #fffaf0 0%, #f3e5ab 100%);
+  z-index: 9999;
+  perspective: 2000px;
+}
+
+.envelope-scene {
+  position: relative;
+  width: 400px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.envelope-box:hover {
+  transform: translateY(-10px) rotateX(5deg);
+}
+
+.envelope-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #e6d58c;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.envelope-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f3e5ab;
+  clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+  z-index: 5;
+}
+
+.envelope-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #dcd099;
+  clip-path: polygon(0 0, 50% 50%, 100% 0);
+  transform-origin: top;
+  transition: transform 0.8s 0.2s ease;
+  z-index: 6;
+}
+
+.envelope-box.is-open .envelope-top {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-letter {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  background: white;
+  z-index: 2;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  will-change: transform;
+}
+
+.letter-inner h3 {
+  color: #aa8a2a;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.letter-inner p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.gold-line {
+  width: 50px;
+  height: 1px;
+  background: #d4af37;
+  margin: 15px auto 0;
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background: #8b0000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #a52a2a;
+}
+
+.seal-inner {
+  color: #d4af37;
+  font-size: 1.2rem;
+}
+
+.open-hint {
+  margin-top: 40px;
+  font-family: var(--font-serif);
+  color: #aa8a2a;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 450px) {
+  .envelope-scene {
+    width: 300px;
+    height: 210px;
+  }
+}

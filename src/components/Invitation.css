@@ -1,0 +1,374 @@
+.invitation-container {
+  background-color: #fffaf0;
+  color: #2c3e50;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets/card-bg.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 250, 240, 0.4);
+}
+
+.hero-card {
+  position: relative;
+  background: white;
+  padding: 80px 40px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+  max-width: 500px;
+  width: 90%;
+  z-index: 1;
+  border: 1px solid #f3e5ab;
+}
+
+.hero-card h1 {
+  font-size: 4.5rem;
+  color: #aa8a2a;
+  margin-bottom: 20px;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #d4af37;
+  margin: 20px 0;
+}
+
+.hero-divider .line {
+  height: 1px;
+  width: 60px;
+  background: #d4af37;
+}
+
+.hero-date {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  color: #7f8c8d;
+}
+
+/* Story Section */
+.story-section {
+  padding: 100px 20px;
+  text-align: center;
+  background: white;
+}
+
+.section-title {
+  font-size: 3rem;
+  color: #aa8a2a;
+  margin-bottom: 30px;
+}
+
+.section-description {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 2;
+  color: #34495e;
+}
+
+/* Timer Section */
+.timer-section {
+  padding: 80px 20px;
+  background: #fdfbf7;
+}
+
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timer-box {
+  background: white;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  border: 1px solid #f4e1a1;
+  text-align: center;
+}
+
+.timer-value {
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #aa8a2a;
+  font-family: var(--font-serif);
+}
+
+.timer-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #95a5a6;
+}
+
+/* Details Grid */
+.details-grid-section {
+  padding: 100px 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.detail-card {
+  background: white;
+  padding: 50px 30px;
+  text-align: center;
+  border: 1px solid #f3e5ab;
+  transition: transform 0.4s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+}
+
+.detail-icon {
+  width: 40px;
+  height: 40px;
+  color: #d4af37;
+  margin-bottom: 25px;
+}
+
+.detail-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+/* Gift Section */
+.gift-section {
+  padding: 100px 20px;
+  background: #fdfbf7;
+  text-align: center;
+}
+
+.gift-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+  border: 1px solid #f3e5ab;
+  position: relative;
+}
+
+.gift-icon-top {
+  width: 50px;
+  height: 50px;
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+.gift-message {
+  color: #7f8c8d;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+.bank-card {
+  background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+  border-radius: 15px;
+  padding: 30px;
+  color: white;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.bank-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+}
+
+.bank-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.bank-name {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.card-logo {
+  height: 30px;
+}
+
+.card-number-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 10px;
+  width: 100%;
+}
+
+.card-number {
+  font-size: 1.1rem; /* Slightly smaller to fit */
+  letter-spacing: 2px;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: nowrap; /* Prevent wrapping */
+  flex: 1; /* Take up available space */
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.copy-btn.copied {
+  background: #2ecc71;
+  border-color: #2ecc71;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-holder {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.copy-toast {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2ecc71;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+/* Location Section */
+.location-section {
+  padding: 100px 20px;
+  background: white;
+  text-align: center;
+}
+
+.map-frame {
+  max-width: 1000px;
+  margin: 40px auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.map-btn {
+  display: inline-block;
+  background: #aa8a2a;
+  color: white;
+  padding: 15px 40px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: var(--font-serif);
+  letter-spacing: 2px;
+  margin-top: 30px;
+  transition: background 0.3s;
+}
+
+.map-btn:hover {
+  background: #8b6d1e;
+}
+
+/* Footer */
+.footer-final {
+  padding: 100px 20px;
+  text-align: center;
+  background: #fffaf0;
+  border-top: 1px solid #f3e5ab;
+}
+
+.footer-final .script-font {
+  font-size: 3rem;
+  color: #aa8a2a;
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  margin-top: 40px;
+  color: #95a5a6;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .timer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-card h1 {
+    font-size: 3rem;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .timer-value {
+    font-size: 2rem;
+  }
+  .card-number {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+  .bank-card {
+    padding: 20px;
+  }
+}

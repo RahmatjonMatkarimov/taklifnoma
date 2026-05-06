@@ -1,0 +1,31 @@
+.music-player {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 2000;
+}
+
+.music-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: var(--transition-smooth);
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  background: var(--color-gold-dark);
+}
+
+.music-toggle svg {
+  width: 24px;
+  height: 24px;
+}
