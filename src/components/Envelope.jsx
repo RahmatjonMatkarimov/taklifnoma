@@ -3,64 +3,72 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { weddingConfig } from '../config';
 import './Envelope.css';
 
-const Envelope = ({ onOpen }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isDone, setIsDone] = useState(false);
+const Envelope = ({ onOpen, onComplete }) => {
+  const [isOpened, setIsOpened] = useState(false);
 
   const handleOpen = () => {
-    if (isOpen) return;
-    setIsOpen(true);
-    // After the flap opens and letter slides out, trigger the transition
+    if (isOpened) return;
+    setIsOpened(true);
+    if (onOpen) onOpen();
+    
+    // Notify when curtains are fully open
     setTimeout(() => {
-      setIsDone(true);
-      if (onOpen) onOpen();
-    }, 2500);
+      if (onComplete) onComplete();
+    }, 3000);
   };
 
   return (
-    <div className="envelope-overlay">
-      <AnimatePresence>
-        {!isDone && (
-          <motion.div 
-            className="envelope-scene"
-            exit={{ opacity: 0, scale: 1.5, filter: 'blur(20px)' }}
-            transition={{ duration: 1 }}
-          >
-            <div className={`envelope-box ${isOpen ? 'is-open' : ''}`} onClick={handleOpen}>
-              <div className="envelope-back"></div>
+    <div className="curtain-overlay">
+      <div className="curtain-container" onClick={handleOpen}>
+        {/* Left Curtain */}
+        <motion.div 
+          className="curtain side left-curtain"
+          initial={{ x: 0 }}
+          animate={isOpened ? { x: '-100%' } : { x: 0 }}
+          transition={{ duration: 2, ease: [0.77, 0, 0.175, 1] }}
+        >
+          <div className="curtain-silk"></div>
+        </motion.div>
+
+        {/* Right Curtain */}
+        <motion.div 
+          className="curtain side right-curtain"
+          initial={{ x: 0 }}
+          animate={isOpened ? { x: '100%' } : { x: 0 }}
+          transition={{ duration: 2, ease: [0.77, 0, 0.175, 1] }}
+        >
+          <div className="curtain-silk"></div>
+        </motion.div>
+
+        {/* Center content centered perfectly */}
+        <div className="center-content-wrapper">
+          <AnimatePresence>
+            {!isOpened && (
               <motion.div 
-                className="envelope-letter"
-                animate={isOpen ? { y: -150, zIndex: 10 } : { y: 0 }}
-                transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
+                className="center-content"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.5, transition: { duration: 0.8 } }}
               >
-                <div className="letter-inner">
-                  <h3 className="script-font">{weddingConfig.coupleNames}</h3>
-                  <p>{weddingConfig.envelopeTitle}</p>
-                  <div className="gold-line"></div>
-                </div>
-              </motion.div>
-              <div className="envelope-front"></div>
-              <div className="envelope-top"></div>
-              {!isOpen && (
-                <div className="envelope-seal">
-                  <div className="seal-inner">
-                    <span>❤</span>
+                <div className="gold-emblem">
+                  <div className="emblem-inner">
+                    <h2 className="script-font">
+                      {weddingConfig.coupleNames.split('&')[0].trim()[0]} & {weddingConfig.coupleNames.split('&')[1].trim()[0]}
+                    </h2>
                   </div>
                 </div>
-              )}
-            </div>
-            {!isOpen && (
-              <motion.p 
-                className="open-hint"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-              >
-                {weddingConfig.envelopeHint}
-              </motion.p>
+                <motion.p 
+                  className="curtain-hint"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ repeat: Infinity, duration: 2 }}
+                >
+                  {weddingConfig.envelopeHint || "Kirish uchun bosing"}
+                </motion.p>
+              </motion.div>
             )}
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 };
