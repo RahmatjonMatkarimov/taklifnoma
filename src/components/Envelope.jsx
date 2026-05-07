@@ -18,7 +18,7 @@ const Envelope = ({ onOpen, onComplete }) => {
   };
 
   return (
-    <div className="curtain-overlay">
+    <div className={`curtain-overlay ${isOpened ? 'opened' : ''}`}>
       <div className="curtain-container" onClick={handleOpen}>
         {/* Left Curtain */}
         <motion.div 

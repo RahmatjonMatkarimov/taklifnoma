@@ -30,10 +30,38 @@ const Invitation = () => {
   }, []);
 
   const [copied, setCopied] = useState(false);
-  const handleCopy = () => {
-    navigator.clipboard.writeText(weddingConfig.giftInfo.cardNumber.replace(/\s/g, ''));
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    const textToCopy = weddingConfig.giftInfo.cardNumber.replace(/\s/g, '');
+    
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(textToCopy);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } else {
+        // Fallback for non-secure contexts or older browsers
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "0";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+          }
+        } catch (err) {
+          console.error('Fallback copy failed', err);
+        }
+        document.body.removeChild(textArea);
+      }
+    } catch (err) {
+      console.error('Clipboard copy failed', err);
+    }
   };
 
   return (
@@ -139,7 +167,7 @@ const Invitation = () => {
               <div className="card-footer">
                 <span className="card-holder">{weddingConfig.giftInfo.cardHolder}</span>
               </div>
-              {copied && <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="copy-toast">{weddingConfig.giftInfo.copySuccess}</motion.span>}
+              {copied && <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="copy-toast">{weddingConfig.giftInfo.copySuccess}</motion.span>}
             </div>
           </motion.div>
         </div>

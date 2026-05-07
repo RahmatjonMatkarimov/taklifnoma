@@ -9,6 +9,10 @@
   overflow: hidden;
 }
 
+.curtain-overlay.opened {
+  pointer-events: none;
+}
+
 .curtain-container {
   position: relative;
   width: 100%;
